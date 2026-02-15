@@ -11,7 +11,8 @@ jobs:
       - name: calling custom js action
         id: customStep
         uses: naresh7991/demo-custom-js-action@v1
-        with: This action used by ${{ github.actor }}
+        with:
+          message: This action used by ${{ github.actor }}
       
       - name: print custom step output
         run: echo printing the time ${{ steps.customStep.output.time }}
