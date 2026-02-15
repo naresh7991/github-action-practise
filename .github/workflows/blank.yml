@@ -60,3 +60,17 @@ jobs:
     steps:
       - name: run a non depends jobs
         run: echo running a not depends steps
+
+  notDependActionWithSuccessCondition:
+    runs-on: ubuntu-latest
+    if: success()
+    steps:
+      - name: run a non depends jobs
+        run: echo running a not depends steps
+
+  notDependActionWithFailureCondition:
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: run a non depends jobs
+        run: echo running a not depends steps
