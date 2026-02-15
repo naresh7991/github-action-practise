@@ -19,13 +19,34 @@ jobs:
           echo Add other actions to build,
           sleep 10
           echo test, and deploy your project.
+      - name: Throw error to testing if other action block
+        run: |
+          echo "::error::this is error message"
+          exit 1
   
+
   dependAction:
     runs-on: ubuntu-latest
     needs: basicAction
     steps:
       - name: Running depends jobs
         run: echo running depends jobs!!
+
+  dependActionSuccess:
+    runs-on: ubuntu-latest
+    needs: basicAction
+    if: needs.basicAction.result == 'success'
+    steps:
+      - name: Running depends jobs when need job pass
+        run: echo running depends jobs with need job pass!!
+
+  dependActionFailure:
+    runs-on: ubuntu-latest
+    needs: basicAction
+    if: needs.basicAction.result == 'failure'
+    steps:
+      - name: Running depends jobs when needs job fail
+        run: echo running depends jobs with need job fail!!
   
   notDependAction:
     runs-on: ubuntu-latest
