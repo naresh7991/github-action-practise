@@ -15,7 +15,7 @@ jobs:
           message: This action used by ${{ github.actor }}
       
       - name: print custom step output
-        run: echo printing the time ${{ steps.customStep.outputs.time }}
+        run: echo "printing the time ${{ steps.customStep.outputs.time }}"
       
       - name: print custom step message
-        run: echo printing the custom message ${{ steps.customStep.outputs.greeting }}
+        run: echo "printing the custom message ${{ steps.customStep.outputs.greeting }}"
