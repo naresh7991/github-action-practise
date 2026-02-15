@@ -5,14 +5,10 @@ on:
   push:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   basicAction:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
       - name: Run a one-line script
@@ -21,4 +17,18 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
+          sleep 10
           echo test, and deploy your project.
+  
+  dependAction:
+    runs-on: ubuntu-latest
+    needs: basicAction
+    steps:
+      - name: Running depends jobs
+        run: echo running depends jobs!!
+  
+  notDependAction:
+    runs-on: ubuntu-latest
+    steps:
+      - name: run a non depends jobs
+        run: echo running a not depends steps
