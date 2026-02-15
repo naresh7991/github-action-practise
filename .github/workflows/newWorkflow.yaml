@@ -32,3 +32,15 @@ jobs:
       - name: print docker action output
         run: |
           echo " printing docker action output: ${{ steps.customStep.outputs.time }}"
+
+  customCompositeJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: custom composite step
+        id: customCompositeAction
+        uses:  naresh7991/github-action-composite-demo@2a8f22aec5a16741659b65586f1b933455bc9007
+        with:
+          message: This is custom message from username ${{github.actor}} and from repo ${{github.repository}}
+      
+      - name:
+        run: echo "printing time of custom composite action- ${{ steps.customCompositeAction.outputs.time }}"
