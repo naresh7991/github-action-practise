@@ -25,7 +25,7 @@ jobs:
     steps:
       - name: calling custom docker action
         id: customStep
-        uses: naresh7991/github-docker-action-demo@357e2c5174577bfd7180c1d9c8c98d69e13343d0
+        uses: naresh7991/github-docker-action-demo@709d80ddea0aad02e85b9103c66b0af854bb026f
         with:
           message: This action used by ${{ github.actor }} && ${{ github.repository }}
       
