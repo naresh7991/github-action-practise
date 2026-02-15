@@ -1,0 +1,13 @@
+name: testing custom Action call
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  customJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: calling custom js action
+        uses: naresh7991/demo-custom-js-action@v1
+
