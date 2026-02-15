@@ -23,6 +23,13 @@ jobs:
         run: |
           echo "::error::this is error message"
           exit 1
+      - name: if any previous step fail
+        if: ${{ failure() }}
+        run: !
+          echo handling previous error
+      - name: if all step passes
+        if: ${{ success() }}
+        run: echo all step passes
   
 
   dependAction:
@@ -43,7 +50,7 @@ jobs:
   dependActionFailure:
     runs-on: ubuntu-latest
     needs: basicAction
-    if: needs.basicAction.result == 'failure'
+    if: always() && needs.basicAction.result == 'failure'
     steps:
       - name: Running depends jobs when needs job fail
         run: echo running depends jobs with need job fail!!
