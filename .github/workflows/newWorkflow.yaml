@@ -5,7 +5,7 @@ on:
     branches: ["main"]
 
 jobs:
-  customJob:
+  customJSJob:
     runs-on: ubuntu-latest
     steps:
       - name: calling custom js action
@@ -19,3 +19,16 @@ jobs:
       
       - name: print custom step message
         run: echo "printing the custom message ${{ steps.customStep.outputs.greeting }}"
+  
+  customDockerJob:
+    runs-on: ubuntu-latest
+    steps:
+      - name: calling custom docker action
+        id: customStep
+        uses: naresh7991/github-docker-action-demo@357e2c5174577bfd7180c1d9c8c98d69e13343d0
+        with:
+          message: This action used by ${{ github.actor }} && ${{ github.repository }}
+      
+      - name: print docker action output
+        run: |
+          echo " printing docker action output: ${{ steps.customStep.outputs.time }}"
