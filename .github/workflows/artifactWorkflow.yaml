@@ -23,6 +23,7 @@ jobs:
     steps:
       - name: running download artifact action
         uses: actions/download-artifact@v4
-      
+        with:
+          name: file
       - name: printing the artifact file
         run: cat file.txt
