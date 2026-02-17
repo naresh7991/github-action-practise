@@ -1,0 +1,26 @@
+name: artifact Workflow
+
+jobs:
+  job_1:
+    name: uploading an artifact file
+    runs_on: ubuntu-latest
+    steps:
+      - name: creating an temp txt file
+        run: echo "hello world" > file.txt
+      
+      - name: running artifact action for saving artifact
+        uses: action/upload-artifact@v2
+        with:
+          name: file
+          path: file.txt
+  
+  job_2:
+    name: downloading an artifact file
+    runs_on: ubuntu-latest
+    needs: job_1
+    steps:
+      - name: running download artifact action
+        uses: action/download-artifact@v2
+      
+      - name: printing the artifact file
+        run: cat file.txt
