@@ -1,9 +1,11 @@
 name: artifact Workflow
 
+on: push
+
 jobs:
   job_1:
     name: uploading an artifact file
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: creating an temp txt file
         run: echo "hello world" > file.txt
@@ -16,7 +18,7 @@ jobs:
   
   job_2:
     name: downloading an artifact file
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: job_1
     steps:
       - name: running download artifact action
